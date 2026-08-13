@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (1/2) · t3b08-mp-massage-info-1</title>
+  <meta name="description" content="t3b08-mp-massage-info-1에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://t3b08-mp-massage-info-1.maphoshirts.com/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ /* CSS Reset */
+ *, *::before, *::after {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ /* Variables */
+ :root {
+ --color-bg: #fafafa;
+ --color-text: #1d1d1d;
+ --color-text-secondary: #6e6e6e;
+ --color-accent: #0071e3;
+ --color-border: #d2d2d7;
+ --color-card-bg: #ffffff;
+ --color-highlight: #f5f5f7;
+ --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+ --font-weight-normal: 400;
+ --font-weight-semibold: 600;
+ --font-weight-bold: 700;
+ --border-radius: 12px;
+ --border-radius-sm: 8px;
+ --max-width: 980px;
+ --header-height: 56px;
+ --spacing-xs: 4px;
+ --spacing-sm: 8px;
+ --spacing-md: 16px;
+ --spacing-lg: 24px;
+ --spacing-xl: 32px;
+ --spacing-2xl: 48px;
+ }
+ body {
+ font-family: var(--font-primary);
+ background-color: var(--color-bg);
+ color: var(--color-text);
+ line-height: 1.6;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ padding-top: var(--header-height);
+ }
+ .container {
+ max-width: var(--max-width);
+ margin: 0 auto;
+ padding: 0 var(--spacing-lg);
+ }
+ h1, h2, h3, h4 {
+ font-weight: var(--font-weight-bold);
+ line-height: 1.2;
+ letter-spacing: -0.02em;
+ }
+ h1 {
+ font-size: 2.5rem;
+ margin-bottom: var(--spacing-md);
+ }
+ h2 {
+ font-size: 1.75rem;
+ margin-bottom: var(--spacing-md);
+ margin-top: var(--spacing-2xl);
+ }
+ h3 {
+ font-size: 1.25rem;
+ margin-bottom: var(--spacing-sm);
+ margin-top: var(--spacing-lg);
+ }
+ p {
+ margin-bottom: var(--spacing-md);
+ color: var(--color-text-secondary);
+ }
+ a {
+ color: var(--color-accent);
+ text-decoration: none;
+ transition: opacity 0.2s ease;
+ }
+ a:hover {
+ opacity: 0.7;
+ }
+ /* Header & Navigation */
+ header {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ z-index: 1000;
+ background-color: rgba(255,255,255,0.9);
+ backdrop-filter: blur(20px);
+ -webkit-backdrop-filter: blur(20px);
+ border-bottom: 1px solid var(--color-border);
+ height: var(--header-height);
+ }
+ .nav-wrapper {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ height: 100%;
+ max-width: var(--max-width);
+ margin: 0 auto;
+ padding: 0 var(--spacing-lg);
+ }
+ .logo {
+ font-weight: var(--font-weight-bold);
+ font-size: 1.125rem;
+ color: var(--color-text);
+ text-decoration: none;
+ }
+ .nav-links {
+ display: flex;
+ gap: var(--spacing-lg);
+ list-style: none;
+ align-items: center;
+ }
+ .nav-links a {
+ color: var(--color-text-secondary);
+ font-size: 0.875rem;
+ font-weight: var(--font-weight-semibold);
+ transition: color 0.2s ease;
+ text-decoration: none;
+ }
+ .nav-links a:hover {
+ color: var(--color-text);
+ }
+ .tel-link {
+ background-color: var(--color-accent);
+ color: #fff !important;
+ padding: 6px 16px;
+ border-radius: 20px;
+ font-size: 0.875rem;
+ font-weight: var(--font-weight-semibold);
+ transition: opacity 0.2s ease;
+ }
+ .tel-link:hover {
+ opacity: 0.8;
+ }
+ .hamburger-menu {
+ display: none;
+ flex-direction: column;
+ gap: 5px;
+ cursor: pointer;
+ padding: 4px;
+ background: none;
+ border: none;
+ }
+ .hamburger-menu span {
+ display: block;
+ width: 20px;
+ height: 2px;
+ background: var(--color-text);
+ border-radius: 2px;
+ transition: all 0.3s ease;
+ }
+ @media (max-width: 768px) {
+ .nav-links {
+ display: none;
+ flex-direction: column;
+ position: absolute;
+ top: var(--header-height);
+ left: 0;
+ right: 0;
+ background: rgba(255,255,255,0.98);
+ backdrop-filter: blur(20px);
+ -webkit-backdrop-filter: blur(20px);
+ padding: var(--spacing-md) var(--spacing-lg);
+ border-bottom: 1px solid var(--color-border);
+ gap: var(--spacing-md);
+ }
+ .nav-links.active {
+ display: flex;
+ }
+ .hamburger-menu {
+ display: flex;
+ }
+ body {
+ padding-top: var(--header-height);
+ }
+ h1 {
+ font-size: 1.75rem;
+ }
+ h2 {
+ font-size: 1.375rem;
+ }
+ .container {
+ padding: 0 var(--spacing-md);
+ }
+ }
+ /* Hero Section */
+ .hero {
+ padding: var(--spacing-2xl) 0;
+ text-align: center;
+ }
+ .hero p {
+ font-size: 1.125rem;
+ max-width: 600px;
+ margin: 0 auto var(--spacing-lg);
+ }
+ /* Info Card Grid */
+ .info-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: var(--spacing-lg);
+ margin: var(--spacing-xl) 0;
+ }
+ .info-card {
+ background: var(--color-card-bg);
+ border-radius: var(--border-radius);
+ padding: var(--spacing-lg);
+ border: 1px solid var(--color-border);
+ transition: transform 0.2s ease, box-shadow 0.2s ease;
+ }
+ .info-card:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+ }
+ .info-card h3 {
+ margin-top: 0;
+ font-size: 1.125rem;
+ }
+ .info-card p {
+ font-size: 0.9375rem;
+ margin-bottom: var(--spacing-sm);
+ }
+ .info-card .tag {
+ display: inline-block;
+ background: var(--color-highlight);
+ padding: 2px 10px;
+ border-radius: 12px;
+ font-size: 0.75rem;
+ font-weight: var(--font-weight-semibold);
+ color: var(--color-text-secondary);
+ margin-bottom: var(--spacing-sm);
+ }
+ /* FAQ Section */
+ .faq-list {
+ margin: var(--spacing-xl) 0;
+ }
+ .faq-item {
+ border-bottom: 1px solid var(--color-border);
+ padding: var(--spacing-md) 0;
+ }
+ .faq-item:last-child {
+ border-bottom: none;
+ }
+ .faq-question {
+ font-weight: var(--font-weight-semibold);
+ font-size: 1.0625rem;
+ cursor: pointer;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ color: var(--color-text);
+ }
+ .faq-question::after {
+ content: '+';
+ font-size: 1.25rem;
+ color: var(--color-text-secondary);
+ transition: transform 0.2s ease;
+ }
+ .faq-question.active::after {
+ transform: rotate(45deg);
+ }
+ .faq-answer {
+ padding-top: var(--spacing-sm);
+ color: var(--color-text-secondary);
+ font-size: 0.9375rem;
+ display: none;
+ }
+ .faq-answer.show {
+ display: block;
+ }
+ /* Footer */
+ footer {
+ border-top: 1px solid var(--color-border);
+ padding: var(--spacing-xl) 0;
+ text-align: center;
+ color: var(--color-text-secondary);
+ font-size: 0.8125rem;
+ margin-top: var(--spacing-2xl);
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (1/2) · t3b08-mp-massage-info-1">
+  <meta property="og:description" content="t3b08-mp-massage-info-1에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://t3b08-mp-massage-info-1.maphoshirts.com/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <div class="nav-wrapper">
+ <a href="/" class="logo">마포 마사지 정보</a>
+ <button class="hamburger-menu" aria-label="메뉴 열기" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+ <span></span>
+ <span></span>
+ <span></span>
+ </button>
+ <ul class="nav-links">
+ <li><a href="/">홈</a></li>
+ <li><a href="/info">정보</a></li>
+ <li><a href="/review">리뷰</a></li>
+ <li><a href="/map">지도</a></li>
+ <li><a href="tel:050712345678" class="tel-link">전화 문의</a></li>
+ </ul>
+ </div>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 40개 · 1/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260705-022.html">마포에서 피로를 푸는 체계적인 마사지 선택 가이드</a>
+        <p class="post-item__summary">마포 지역에는 지친 몸을 회복하기 위한 다양한 형태의 마사지 시설이 운영되고 있습니다. 마사지는 단순한 휴식을 넘어 근육의 긴장을 완화하고 혈액 순환을 돕는 보조적인 건강 관리 방법으로 활용됩니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0035.html">마포 마사지 정보 어디서 어떻게 확인할까</a>
+        <p class="post-item__summary">마포 지역은 마사지 업소가 많아 선택이 쉽지 않은 곳 중 하나다. 각 업소마다 제공하는 서비스와 분위기가 다르므로 방문 전에 충분히 알아보는 것이 좋다. 가격과 코스 구성은 기본적으로 확인해야 할 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0036.html">마포 마사지 정보: 편안함과 여유를 동시에 누리는 지역 탐방</a>
+        <p class="post-item__summary">마포는 서울의 중심부에 위치하면서도 도시의 번잡함을 잠시 떨칠 수 있는 많은 명소를 가지고 있다. 이러한 공원적 분위기 속에서 찾아볼 수 있는 마포 마사지 정보는 특히 바쁜 일상에서 휴식이 필요할 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0037.html">마포에서 마사지 정보 찾는 법과 현명한 선택 기준</a>
+        <p class="post-item__summary">마포 지역은 홍대, 합정, 상수 등 다양한 상권이 밀집해 있어 마사지 업소도 많다. 피로를 풀기 위해 마사지를 찾는 사람들이 늘면서 관련 정보를 얻는 경로도 다양해지고 있다. 온라인 커뮤니티나 블로</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0038.html">마포 마사지에서 최적의 휴식을 찾기</a>
+        <p class="post-item__summary">마포 지역에는 심리적 치유와 육체적 안정을 동시에 제공하는 다양한 마사지 전문점이 있습니다. 감각을 선채하고 싶다면 필라리스 마사지, 리라스 등에서 제공하는 스트레스 완화 프로그램이 큰 도움이 됩니</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0039.html">마포에서 찾는 진정한 휴식, 마사지 정보 이야기</a>
+        <p class="post-item__summary">서울 서북부의 중심 마포는 유동 인구가 많고 젊은 문화가 살아있는 지역이다. 바쁜 일상 속에서 몸과 마음의 피로를 풀어줄 마사지 샵을 찾는 사람들이 늘어나면서, 마포 마사지 정보에 대한 관심도 함께</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0040.html">마포 마사지 정보, 편안함을 찾아다니기</a>
+        <p class="post-item__summary">마포에서 찾아볼 수 있는 다양한 마사지 장르가 있습니다. 전통 한방부터 현대 스파 스타일까지, 선택의 폭이 넓어 선택에 고민이 생길 때가 많죠. 각각의 기초 운영 방식을 비교해 보면 어느 곳이 가장</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0041.html">마포 마사지 정보 제대로 확인하는 법</a>
+        <p class="post-item__summary">마포에는 홍대, 합정, 상수 일대를 중심으로 다양한 마사지 업소가 자리 잡고 있다. 스웨디시, 타이 마사지, 스포츠 마사지 등 선택지도 넓어 방문 전에 자신의 목적에 맞는 스타일을 정해두는 것이 좋</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0042.html">마포 마사지 정보: 지역별 편안함과 선택 팁</a>
+        <p class="post-item__summary">마포에서 찾을 수 있는 마사지 장소는 다양하며, 지역 커뮤니티에서 선호되는 곳이 많다. 신뢰성 높은 업체들은 청결과 전문 기술을 보장해 주는 자격증 보유 트레이너를 배치한다. 또한, 근처 신문지나 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0043.html">마포 마사지 정보로 알아보는 지역 힐링 문화</a>
+        <p class="post-item__summary">마포 지역은 젊은 유동 인구가 많아 마사지 업소 또한 다양한 형태로 자리잡고 있다. 출근길 피로를 풀기 위한 직장인부터 주말에 방문하는 커플까지 방문 목적도 다양하다. 이렇다 보니 마사지 정보를 미</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0044.html">마포 마사지 정보: 전통과 현대가 조화를 이룬 힐링 스팟</a>
+        <p class="post-item__summary">마포의 한복판, 전통 한방과 현대 부위 지향적 마사지가 융합된 공간이 있다. 바쁜 일상 속에서 잠깐씩 숨을 돌리고 몸과 마음을 동시에 회복시켜 주는 이곳은 오랜 역사를 간직한 작은 보석과 같은 곳이</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0045.html">마포 마사지 정보가 궁금하다면</a>
+        <p class="post-item__summary">마포 지역은 홍대, 합정, 상수, 연남동 등 다양한 상권이 밀집해 있어 마사지 업체도 많고 종류도 다양하다. 림프 관리, 스포츠 회복, 경락 마사지, 스웨디시 등 세부 전공을 내세우는 곳이 많아 선</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0046.html">마포 마사지 정보: 현지 걱정 없이 편안한 힐링 팁</a>
+        <p class="post-item__summary">마포 지역은 번화한 도심 속에서도 휴식을 찾을 수 있는 마포 마사지 시설이 다수 있습니다. 전문 마사지사는 고객 맞춤형 프로그램을 제공하며, 편안한 분위기와 함께 릭스닭기도 기본입니다. 개인과 가족</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0047.html">마포 마사지 정보, 미리 알면 더 나은 선택이 가능하다</a>
+        <p class="post-item__summary">마포는 홍대, 합정, 상수 등 지역별로 분위기가 확연히 달라 마사지 샵도 다양하게 분포해 있다. 각 지역마다 방문객 층이 다르다 보니 샵의 컨셉과 가격대, 운영 방식도 제각각이라 자신에게 맞는 곳을</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0048.html">마포 마사지 정보: 편안함을 찾아 떠나는 한순간</a>
+        <p class="post-item__summary">마포는 서울에서 가장 활기찬 지역 중 하나로, 다양한 피부와 근육을 편안하게 풀어주는 마사지가 인기를 끌고 있다. 특히 이 지역은 신체적인 피로를 해소하면서도 도시 생활 속 작은 힐링을 제공하는 곳</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0049.html">마포 마사지 정보: 피로 회복을 위한 지역 가이드</a>
+        <p class="post-item__summary">마포구에는 직장인과 대학생이 많이 거주하는 특성상 다양한 마사지 업체가 운영되고 있다. 스웨디시, 타이, 아로마 등 여러 코스를 제공하는 곳이 많아 개인의 선호도에 따라 선택할 수 있다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0050.html">마포 마사지 정보: 편리한 선택 가이드</a>
+        <p class="post-item__summary">마포 지역의 마사지 시설은 늘 변화를 시도한다. 새로운 테라피가 도입될 때마다 품질이 향상된다. 특히 지역 주민들에게 친숙한 숙련된 테라피스트가 많다. 서울의 중심에 위치하면서도 상대적으로 저렴한 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260706-0051.html">마포 마사지 정보, 피로를 풀고 싶다면 주목</a>
+        <p class="post-item__summary">마포에는 일상에 지친 이들을 위한 마사지 업소가 다양하게 자리 잡고 있다. 퇴근 후 부담 없이 들를 수 있는 곳이 많아 마포 마사지 정보를 꼼꼼히 비교해보는 사람들이 늘고 있다. 각 업소마다 콘셉트</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0217.html">마포 마사지 정보 확인을 통한 구글 알고리즘 고신용 도메인 보증 카드 발급 전략</a>
+        <p class="post-item__summary">특정 지역의 서비스를 검색하다 보면 예상치 못한 도메인 운영 환경의 중요성을 체감하게 됩니다. 흔히 마포 마사지 정보 등을 찾기 위해 웹을 탐색할 때, 신뢰도가 낮은 사이트가 상단에 배치되는 것을 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0218.html">마포 마사지 정보 사이트 활용과 마포 홍대 단체 가라오케 예약 가이드</a>
+        <p class="post-item__summary">많은 이들이 오해하는 것 중 하나는 단체 모임 장소를 예약할 때 무조건 대형 업체를 우선순위에 두는 것입니다. 마포 마사지 정보 관련 사이트에서 접하는 후기들이 항상 정답은 아니듯, 가라오케 역시 </p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <span class="pager__current">1</span>
+      <a class="pager__link" href="posts-2.html">2</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
